@@ -1,0 +1,98 @@
+function PlayerModel({ nodes, materials, scale, position, rotation, group }) {
+	// Create white skin materials
+	const whiteSkinMaterial = materials.Wolf3D_Skin.clone();
+	whiteSkinMaterial.color.setHex(0xf5f5dc); // Light skin tone
+	
+	const whiteBodyMaterial = materials.Wolf3D_Body.clone();
+	whiteBodyMaterial.color.setHex(0xf5f5dc); // Light skin tone
+
+	return (
+		<group
+			dispose={null}
+			scale={scale}
+			position={position}
+			ref={group}
+			rotation={rotation}
+		>
+			<group>
+				<primitive object={nodes.Hips} />
+				<skinnedMesh
+					frustumCulled={false}
+					geometry={nodes.Wolf3D_Body.geometry}
+					material={whiteBodyMaterial}
+					skeleton={nodes.Wolf3D_Body.skeleton}
+				/>
+				<skinnedMesh
+					frustumCulled={false}
+					geometry={nodes.Wolf3D_Outfit_Bottom.geometry}
+					material={materials.Wolf3D_Outfit_Bottom}
+					skeleton={nodes.Wolf3D_Outfit_Bottom.skeleton}
+				/>
+				<skinnedMesh
+					frustumCulled={false}
+					geometry={nodes.Wolf3D_Outfit_Footwear.geometry}
+					material={materials.Wolf3D_Outfit_Footwear}
+					skeleton={nodes.Wolf3D_Outfit_Footwear.skeleton}
+				/>
+				<skinnedMesh
+					frustumCulled={false}
+					geometry={nodes.Wolf3D_Outfit_Top.geometry}
+					material={materials.Wolf3D_Outfit_Top}
+					skeleton={nodes.Wolf3D_Outfit_Top.skeleton}
+				/>
+				<skinnedMesh
+					frustumCulled={false}
+					geometry={nodes.Wolf3D_Hair.geometry}
+					material={materials.Wolf3D_Hair}
+					skeleton={nodes.Wolf3D_Hair.skeleton}
+				/>
+				<skinnedMesh
+					frustumCulled={false}
+					name="EyeLeft"
+					geometry={nodes.EyeLeft.geometry}
+					material={materials.Wolf3D_Eye}
+					skeleton={nodes.EyeLeft.skeleton}
+					morphTargetDictionary={nodes.EyeLeft.morphTargetDictionary}
+					morphTargetInfluences={nodes.EyeLeft.morphTargetInfluences}
+				/>
+				<skinnedMesh
+					frustumCulled={false}
+					name="EyeRight"
+					geometry={nodes.EyeRight.geometry}
+					material={materials.Wolf3D_Eye}
+					skeleton={nodes.EyeRight.skeleton}
+					morphTargetDictionary={nodes.EyeRight.morphTargetDictionary}
+					morphTargetInfluences={nodes.EyeRight.morphTargetInfluences}
+				/>
+				<skinnedMesh
+					frustumCulled={false}
+					name="Wolf3D_Head"
+					geometry={nodes.Wolf3D_Head.geometry}
+					material={whiteSkinMaterial}
+					skeleton={nodes.Wolf3D_Head.skeleton}
+					morphTargetDictionary={
+						nodes.Wolf3D_Head.morphTargetDictionary
+					}
+					morphTargetInfluences={
+						nodes.Wolf3D_Head.morphTargetInfluences
+					}
+				/>
+				<skinnedMesh
+					frustumCulled={false}
+					name="Wolf3D_Teeth"
+					geometry={nodes.Wolf3D_Teeth.geometry}
+					material={materials.Wolf3D_Teeth}
+					skeleton={nodes.Wolf3D_Teeth.skeleton}
+					morphTargetDictionary={
+						nodes.Wolf3D_Teeth.morphTargetDictionary
+					}
+					morphTargetInfluences={
+						nodes.Wolf3D_Teeth.morphTargetInfluences
+					}
+				/>
+			</group>
+		</group>
+	);
+}
+
+export default PlayerModel;
